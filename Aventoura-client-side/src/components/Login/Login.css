@@ -1,0 +1,19 @@
+.login-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    border: 3px solid #301934;
+    text-align: center;
+    padding: 8rem;
+}
+
+.google-icon {
+    margin: 0 auto;
+    width: 90px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 991px) {
+    .login-container {
+        width: 90%;
+    }
+}

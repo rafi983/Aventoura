@@ -1,0 +1,13 @@
+.order {
+    background-color: #301934;
+    color: #fff;
+    padding: 2rem;
+}
+.order-spinner {
+    margin-left: 45rem;
+    margin-top: 15rem;
+}
+
+.orderscontainer {
+    min-height: 500px;
+}

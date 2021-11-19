@@ -1,0 +1,5 @@
+@media only screen and (max-width: 281px) {
+    .order-img {
+        height: 220px !important;
+    }
+}

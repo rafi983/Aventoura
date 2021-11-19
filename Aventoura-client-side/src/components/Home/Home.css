@@ -1,0 +1,92 @@
+.banner {
+    position: relative;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../images/banner-bg.jpg");
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.banner-content ,.banner-content Button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.banner-content Button {
+    margin-top: 10rem;
+}
+.banner-content h1 {
+    text-align: center;
+    font-size: 3.4rem;
+    font-weight: 700;
+}
+.banner-content p {
+    font-size: 1.1rem;
+}
+
+.about-img {
+    border: 8px solid #22a6b3;
+}
+
+.globe {
+ font-size: 5rem;
+}
+.country-box {
+    background-color: #fbc531;
+}
+.gallery-title {
+    color: orangered;
+}
+
+.travel-title {
+    color: #101F46;
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+.travel-gallery {
+    margin: 5rem 0;
+}
+.tour-spinner {
+    margin-left: 40rem;
+}
+
+@media only screen and (max-width: 991px) {
+    .banner-content h1 {
+        font-size: 1.5rem;
+    }
+    .banner-content p {
+        font-size: .9rem;
+    }
+    .banner-content Button {
+        margin-top: 13rem;
+    }
+    .country-box {
+        width: 100% !important;
+        margin: 2rem 0;
+    }
+    .gallery-pics {
+        padding-left: .6rem !important;
+    }
+    .one {
+        width: 100%;
+    }
+    .two,.three {
+        width: 100%;
+        padding: 1rem 0;
+    }
+    .three {
+        margin-left: 0 !important;
+    }
+
+}
+@media only screen and (max-width: 281px){
+    .travel-title {
+        font-size: 1.8rem;
+    }
+    .banner-content Button {
+        margin-top: 14rem;
+    }
+
+}
