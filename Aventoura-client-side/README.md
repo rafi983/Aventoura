@@ -1,44 +1,123 @@
-# Aventoura - Travel Planner Website
+# Aventoura Client (Frontend)
 
-Live-site : https://aventoura.netlify.app/
+This is the React frontend for Aventoura.
 
-This webpage is all about a travel planner website for the tourists.
+## Tech stack
 
-### `Website-information`
+- React 17 (Create React App)
+- React Router v5
+- React Bootstrap + Bootstrap
+- Firebase authentication
+- Axios + Fetch for API calls
 
-- This website has three different routes in the navbar. And All these three routes are private
+## Features
 
-- In the Home page, there are a banner, some key travel packages of our company, all our travel packages featured in this page , info about company and a minimalistic footer.
+- Home page with tour package listing
+- Google login authentication
+- Private routes for order-related pages
+- Place order flow
+- My orders management (user side)
+- Manage all orders (admin side)
+- Add package flow
 
-- User can book any of our packages from our featured packages . If any user is not logged in he/she is gonna go the login page and after login , will be redirected to the place order page where user can give information of them and finally place order.
+## Folder notes
 
-- After place order, user can see his placed order in my-orders page where he/she can delete order if they want to.
+- `src/components` - all UI pages/components
+- `src/hooks` - custom hooks like auth/firebase hook
+- `src/context` - auth context provider
+- `src/apiBaseUrl.js` - centralized backend API base URL
+- `public/_redirects` - SPA routing support for Netlify
 
-- In manage all orders page, all of the orders placed by different users are visible where we can delete the order and also update the delivery status of the order.
+## Prerequisites
 
-- In add package page, we can create a new travel package and after it's done, new package will be displayed in our home page.
+- Node.js `>=18 <23`
+- npm
+- Backend API running (local or deployed)
+- Firebase config set in frontend firebase config files
 
-- This website is built with the power of React js along with react-bootstrap, firebase, react-router, node js, mongodb and express js
+## Environment variables
 
-## Local setup
+Create env files in `Aventoura-client-side`.
 
-1. Create `.env` in client root:
+### `.env.development`
 
+```env
+REACT_APP_API_BASE_URL=https://aventoura-api.onrender.com
 ```
-REACT_APP_API_BASE_URL=http://localhost:5000
+
+### `.env.production`
+
+```env
+REACT_APP_API_BASE_URL=https://aventoura-api.onrender.com
 ```
 
-2. Run client:
+`REACT_APP_API_BASE_URL` is used by `src/apiBaseUrl.js`.
 
-```
+## Local development
+
+```bash
 npm install
 npm start
 ```
 
-3. Run backend from `Aventoura-server-side` with valid MongoDB env vars.
+App runs at `http://localhost:3000`.
+
+## Build
+
+```bash
+npm run build
+```
+
+Build output is generated in `build/`.
+
+## Scripts
+
+- `npm start` - run dev server
+- `npm run build` - create production build
+- `npm test` - run tests
+- `npm run eject` - eject CRA config
 
 ## Deployment
 
-- Set client env var `REACT_APP_API_BASE_URL` to deployed backend URL.
-- Set backend env var `CLIENT_URL` to deployed frontend URL.
-- See root `DEPLOYMENT.md` for full deployment steps.
+### Vercel
+
+- Root Directory: `Aventoura-client-side`
+- Build Command: `npm run build`
+- Output Directory: `build`
+- Environment Variable:
+  - `REACT_APP_API_BASE_URL=https://aventoura-api.onrender.com`
+
+If CRA warnings fail build in CI, set `CI=false` in Vercel env variables.
+
+### Netlify
+
+- Base directory: `Aventoura-client-side`
+- Build command: `npm run build`
+- Publish directory: `build`
+- Env var: `REACT_APP_API_BASE_URL=https://aventoura-api.onrender.com`
+
+`public/_redirects` is already included for SPA route refresh support.
+
+## Troubleshooting
+
+### Failed to fetch
+
+- Verify `REACT_APP_API_BASE_URL` is correct
+- Verify backend endpoint works: `https://aventoura-api.onrender.com/packages`
+- Restart frontend after env changes
+
+### Local frontend still calling localhost backend
+
+- Check `src/apiBaseUrl.js`
+- Ensure `.env.development` is present and frontend was restarted
+
+### Vercel builds with yarn unexpectedly
+
+- Ensure `yarn.lock` is removed and committed
+- Keep only `package-lock.json`
+
+## Related docs
+
+- Root docs: `../README.md`
+- Backend docs: `../Aventoura-server-side/README.md`
+- Deployment checklist: `../DEPLOYMENT.md`
