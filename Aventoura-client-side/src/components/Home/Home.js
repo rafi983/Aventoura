@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./Home.css";
-import aboutImg from "../../images/about-img.jpg";
-import Navmenu from "../Navmenu/Navmenu";
+import { useEffect, useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import Package from "../Package/Package";
+import Spinner from "react-bootstrap/Spinner";
+import API_BASE_URL from "../../apiBaseUrl";
+import aboutImg from "../../images/about-img.jpg";
 import imgOne from "../../images/img1.jpg";
 import imgTwo from "../../images/img2.jpg";
 import imgThree from "../../images/img3.jpg";
 import imgFour from "../../images/img4.jpg";
 import Footer from "../Footer/Footer";
-import Spinner from "react-bootstrap/Spinner";
+import Navmenu from "../Navmenu/Navmenu";
+import Package from "../Package/Package";
+import "./Home.css";
 
 const Home = () => {
   const [packages, setPackages] = useState([]);
@@ -17,7 +18,7 @@ const Home = () => {
   const [pkgLoading, setPkgLoading] = useState(false);
 
   useEffect(() => {
-    fetch("https://obscure-shore-02398.herokuapp.com/packages")
+    fetch(`${API_BASE_URL}/packages`)
       .then((res) => res.json())
       .then((data) => {
         setPkgLoading(true);

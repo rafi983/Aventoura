@@ -1,12 +1,12 @@
 import {
-  getAuth,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithPopup,
+    signOut,
 } from "firebase/auth";
-import initializeFirebase from "../firebase/firebase.init";
 import { useEffect, useState } from "react";
+import initializeFirebase from "../firebase/firebase.init";
 
 initializeFirebase();
 
@@ -40,8 +40,8 @@ const useFirebase = () => {
       setIsLoading(false);
     });
 
-    return () => unsubscribed;
-  }, []);
+    return () => unsubscribed();
+  }, [auth]);
 
   return {
     signInUsingGoogle,

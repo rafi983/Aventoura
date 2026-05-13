@@ -1,15 +1,13 @@
-import React from "react";
-import useFirebase from "../../hooks/useFirebase";
-import Navmenu from "../Navmenu/Navmenu";
 import { useHistory, useLocation } from "react-router-dom";
+import Navmenu from "../Navmenu/Navmenu";
 
+import { Image } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
-import { Button, Image } from "react-bootstrap";
-import "./Login.css";
 import google from "../../images/google.png";
+import "./Login.css";
 
 const Login = () => {
-  const { signInUsingGoogle, user, setUser, setIsLoading } = useAuth();
+  const { signInUsingGoogle, setIsLoading } = useAuth();
 
   const location = useLocation();
   const history = useHistory();
@@ -18,7 +16,7 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     signInUsingGoogle()
-      .then((result) => {
+      .then(() => {
         history.push(redirect_uri);
       })
       .finally(() => setIsLoading(false));

@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
-import Navmenu from "../Navmenu/Navmenu";
+import API_BASE_URL from "../../apiBaseUrl";
 import Footer from "../Footer/Footer";
+import Navmenu from "../Navmenu/Navmenu";
 import "./ManageAllOrders.css";
 
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   const [allOrdersSpinner, setAllOrdersSpinner] = useState(false);
   useEffect(() => {
-    fetch("https://obscure-shore-02398.herokuapp.com/allorders")
+    fetch(`${API_BASE_URL}/allorders`)
       .then((res) => res.json())
       .then((data) => {
         setAllOrdersSpinner(true);
         setAllOrders(data);
       });
-  }, [allOrders]);
+  }, []);
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete?");
     if (proceed) {
-      fetch(`https://obscure-shore-02398.herokuapp.com/allorders/${id}`, {
+      fetch(`${API_BASE_URL}/allorders/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -32,18 +33,23 @@ const ManageAllOrders = () => {
   };
 
   const handleStatus = (id) => {
-    fetch(`https://obscure-shore-02398.herokuapp.com/allorders/${id}`, {
+    fetch(`${API_BASE_URL}/allorders/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        status: allOrders[0]?.status,
+        status: "Approved",
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
+          setAllOrders((prevOrders) =>
+            prevOrders.map((order) =>
+              order._id === id ? { ...order, status: "Approved" } : order
+            )
+          );
           alert("status changed");
         }
       });

@@ -1,17 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
+import AddPackage from "./components/AddPackage/AddPackage";
 import Home from "./components/Home/Home";
-import { Container } from "react-bootstrap";
-import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AuthProvider from "./context/AuthProvider";
+import ManageAllOrders from "./components/ManageAllOrders/ManageAllOrders";
+import MyOrders from "./components/MyOrders/MyOrders";
+import NotFound from "./components/NotFound/NotFound";
 import PlaceOrder from "./components/PlaceOrder/PlaceOrder";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import MyOrders from "./components/MyOrders/MyOrders";
-import ManageAllOrders from "./components/ManageAllOrders/ManageAllOrders";
-import AddPackage from "./components/AddPackage/AddPackage";
-import NotFound from "./components/NotFound/NotFound";
+import AuthProvider from "./context/AuthProvider";
 
 function App() {
   return (

@@ -19,3 +19,26 @@ This webpage is all about a travel planner website for the tourists.
 - In add package page, we can create a new travel package and after it's done, new package will be displayed in our home page.
 
 - This website is built with the power of React js along with react-bootstrap, firebase, react-router, node js, mongodb and express js
+
+## Local setup
+
+1. Create `.env` in client root:
+
+```
+REACT_APP_API_BASE_URL=http://localhost:5000
+```
+
+2. Run client:
+
+```
+npm install
+npm start
+```
+
+3. Run backend from `Aventoura-server-side` with valid MongoDB env vars.
+
+## Deployment
+
+- Set client env var `REACT_APP_API_BASE_URL` to deployed backend URL.
+- Set backend env var `CLIENT_URL` to deployed frontend URL.
+- See root `DEPLOYMENT.md` for full deployment steps.

@@ -1,11 +1,11 @@
-import React from "react";
-import Navmenu from "../Navmenu/Navmenu";
-import Footer from "../Footer/Footer";
+import axios from "axios";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import "./AddPackage.css";
+import API_BASE_URL from "../../apiBaseUrl";
 import addPackageImg from "../../images/addPackageImg.png";
+import Footer from "../Footer/Footer";
+import Navmenu from "../Navmenu/Navmenu";
+import "./AddPackage.css";
 
 const AddPackage = () => {
   const {
@@ -17,7 +17,7 @@ const AddPackage = () => {
 
   const onSubmit = (data) => {
     axios
-      .post(`https://obscure-shore-02398.herokuapp.com/packages`, data)
+      .post(`${API_BASE_URL}/packages`, data)
       .then((res) => {
         if (res.data.insertedId) {
           alert("Package added successfully");

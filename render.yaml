@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aventoura-api
+    runtime: node
+    rootDir: Aventoura-server-side
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false

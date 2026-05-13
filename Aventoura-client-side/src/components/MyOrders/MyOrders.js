@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import Navmenu from "../Navmenu/Navmenu";
-import Footer from "../Footer/Footer";
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import API_BASE_URL from "../../apiBaseUrl";
+import useAuth from "../../hooks/useAuth";
+import Footer from "../Footer/Footer";
+import Navmenu from "../Navmenu/Navmenu";
 import "./MyOrders.css";
 
 const MyOrders = () => {
@@ -11,18 +12,22 @@ const MyOrders = () => {
   const [ordersLoading, setOrdersLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`https://obscure-shore-02398.herokuapp.com/myorders/${user?.email}`)
+    if (!user?.email) {
+      return;
+    }
+
+    fetch(`${API_BASE_URL}/myorders/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyOrders(data);
         setOrdersLoading(true);
       });
-  }, []);
+  }, [user?.email]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete?");
     if (proceed) {
-      fetch(`https://obscure-shore-02398.herokuapp.com/myorders/${id}`, {
+      fetch(`${API_BASE_URL}/myorders/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

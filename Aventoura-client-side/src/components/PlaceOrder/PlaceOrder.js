@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import Navmenu from "../Navmenu/Navmenu";
-import Footer from "../Footer/Footer";
-import "./PlaceOrder.css";
-import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { useHistory, useParams } from "react-router-dom";
+import API_BASE_URL from "../../apiBaseUrl";
+import useAuth from "../../hooks/useAuth";
+import Footer from "../Footer/Footer";
+import Navmenu from "../Navmenu/Navmenu";
+import "./PlaceOrder.css";
 
 const PlaceOrder = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const PlaceOrder = () => {
 
   const onSubmit = (data) => {
     axios
-      .post(`https://obscure-shore-02398.herokuapp.com/myorders`, {
+      .post(`${API_BASE_URL}/myorders`, {
         img: singlePackage?.img,
         title: singlePackage?.title,
         desc: singlePackage?.desc,
@@ -42,10 +43,10 @@ const PlaceOrder = () => {
   };
 
   useEffect(() => {
-    fetch(`https://obscure-shore-02398.herokuapp.com/packages/${id}`)
+    fetch(`${API_BASE_URL}/packages/${id}`)
       .then((res) => res.json())
       .then((data) => setSinglePackage(data));
-  });
+  }, [id]);
 
   const handleClickHome = () => {
     history.push("/");

@@ -1,7 +1,6 @@
-import React from "react";
-import { Card, Button, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import './Package.css'
+import './Package.css';
 
 const Package = (props) => {
   const { img, title, desc, price, _id } = props.pkg;
@@ -30,7 +29,7 @@ const Package = (props) => {
           <Card.Text>{desc}</Card.Text>
           <Card.Text className="fs-2 fw-bold">{price} $</Card.Text>
           <Button
-            onClick={() => handleClick(props.pkg._id)}
+            onClick={() => handleClick(_id)}
             style={{ backgroundColor: "#8c7ae6" }}
           >
             Book Now
